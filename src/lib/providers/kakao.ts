@@ -51,7 +51,7 @@ export function mapKakaoDoc(d: KakaoDoc): Book | null {
   };
 }
 
-const key = () => process.env.KAKAO_REST_KEY ?? '';
+const key = () => (process.env.KAKAO_REST_KEY ?? '').trim().replace(/^KakaoAK\s+/i, '');
 
 async function query(params: Record<string, string>) {
   const u = new URL(BASE);

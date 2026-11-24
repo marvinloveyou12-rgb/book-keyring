@@ -108,3 +108,16 @@ describe('image proxy allowlist', () => {
     expect(isAllowedImageUrl('https://cdn.example.com/a.png')).not.toBeNull();
   });
 });
+
+describe('provider errors', () => {
+  it('surfaces the reason from an error body and trims the key', async () => {
+    vi.stubEnv('BOOK_PROVIDER', 'kakao');
+    vi.stubEnv('KAKAO_REST_KEY', '  abc123 \n');
+    const spy = vi.spyOn(globalThis, 'fetch').mockResolvedValue(
+      new Response(JSON.stringify({ errorType: 'AccessDeniedError', message: 'wrong appKey type' }), { status: 401 }),
+    );
+    await expect(searchBooks('책', 1)).rejects.toThrow('[kakao] HTTP 401 (AccessDeniedError: wrong appKey type)');
+    const init = spy.mock.calls[0][1] as RequestInit;
+    expect((init.headers as Record<string, string>).Authorization).toBe('KakaoAK abc123');
+  });
+});

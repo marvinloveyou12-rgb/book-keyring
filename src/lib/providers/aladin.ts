@@ -45,7 +45,7 @@ export function mapAladinItem(it: AladinItem): Book | null {
   };
 }
 
-const key = () => process.env.ALADIN_TTB_KEY ?? '';
+const key = () => (process.env.ALADIN_TTB_KEY ?? '').trim();
 
 export const aladin: BookProvider = {
   id: 'aladin',

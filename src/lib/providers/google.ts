@@ -52,7 +52,8 @@ export function mapGoogleVolume(v: GoogleVolume): Book | null {
 async function query(q: string, start: number, max: number) {
   const u = new URL(BASE);
   const p = new URLSearchParams({ q, startIndex: String(start), maxResults: String(max) });
-  if (process.env.GOOGLE_BOOKS_API_KEY) p.set('key', process.env.GOOGLE_BOOKS_API_KEY);
+  const key = process.env.GOOGLE_BOOKS_API_KEY?.trim();
+  if (key) p.set('key', key);
   u.search = p.toString();
   return fetchJson<GoogleResponse>('google', u.toString());
 }
