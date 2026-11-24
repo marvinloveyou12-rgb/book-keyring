@@ -126,6 +126,13 @@ export default function Home() {
           {storageWarning && <p className="small warn">브라우저 저장 공간이 부족해 목록이 새로고침 후 유지되지 않을 수 있어요.</p>}
         </div>
       </main>
+      <footer className="app-footer">
+        <p>
+          표지 이미지와 도서 정보의 저작권은 각 출판사와 저작권자에게 있습니다. 이 도구로 만든 표지는 <strong>개인적·비상업적 용도</strong>로만
+          사용해 주세요. 판매하거나 단체에 배포하려면 해당 출판사의 허락을 받아야 합니다.
+        </p>
+        <p>도서 정보와 표지 이미지는 외부 도서 검색 서비스(카카오 등)에서 받아오며, 이 사이트는 이를 별도로 저장하지 않습니다.</p>
+      </footer>
     </>
   );
 }

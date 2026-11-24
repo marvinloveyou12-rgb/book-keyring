@@ -98,6 +98,9 @@ export function PrintList(props: {
       <p className="small muted" style={{ marginBottom: 0 }}>
         인쇄할 때 <strong>“실제 크기 / 100%”</strong>를 선택하세요. “페이지에 맞추기”로 인쇄하면 크기가 줄어듭니다. 첫 장의 50mm 자로 확인할 수 있어요.
       </p>
+      <p className="small muted" style={{ margin: '4px 0 0' }}>
+        표지는 출판사의 저작물이에요. 개인적인 용도로만 사용해 주세요.
+      </p>
       {done && <p className="small ok">{done}</p>}
       {error && <p className="error">{error}</p>}
     </section>
